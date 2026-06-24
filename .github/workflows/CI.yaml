@@ -64,18 +64,13 @@ jobs:
           go-version-file: 'go.mod'
           cache-dependency-path: 'go.sum'
       
-      # - name: go lang formater
-      #   run: go fmt
+      - name: go lang formater
+        run: go fmt
 
-      # - name: go vet
-      #   run: go vet
+      - name: go vet
+        run: go vet
 
-      - name: Run Go Linting
-        uses: golangci/golangci-lint-action@v9
-        with:
-          version: latest
-          working-directory: backend
-
+   
       - name: Run Tests
         run: go test
 

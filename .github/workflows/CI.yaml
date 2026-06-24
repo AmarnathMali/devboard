@@ -74,6 +74,7 @@ jobs:
         uses: golangci/golangci-lint-action@v9
         with:
           version: latest
+          working-directory: backend
 
       - name: Run Tests
         run: go test

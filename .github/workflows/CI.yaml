@@ -71,7 +71,7 @@ jobs:
       #   run: go vet
 
       - name: Run Go Linting
-        uses: golangci/golangci-lint-action@v5
+        uses: golangci/golangci-lint-action@v9
         with:
           version: latest
 

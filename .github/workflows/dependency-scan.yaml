@@ -10,6 +10,9 @@ jobs:
     steps:
       - name: code checkout
         uses: actions/checkout@v7
+        with:
+          # Explicitly clear the token after downloading the code
+          persist-credentials: false 
       
       - name: setup Go
         uses: actions/setup-go@v6

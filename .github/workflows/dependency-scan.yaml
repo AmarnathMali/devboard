@@ -24,7 +24,7 @@ jobs:
       - name: Run Govulncheck
         uses: golang/govulncheck-action@v1
         with:
-          working-directory: backend
+          work-dir: backend
           go-version-input: '1.22'
         
 

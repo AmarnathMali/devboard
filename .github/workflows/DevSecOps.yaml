@@ -19,6 +19,9 @@ jobs:
   docker-scan:
     uses: ./.github/workflows/docker-scan.yaml
     secrets: inherit
+
+  sonarqube:
+    uses:./.github/workflows/sonarqube-scan.yaml
   
   
 

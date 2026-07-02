@@ -1,0 +1,17 @@
+#Goal - to check any security threats to checke hidden bugs, security gaps etc.
+name: sonarqube-scan
+on:
+  workflows_call:
+
+jobs:
+  sonarqube-scan:
+  runs-on: ubuntu-latest
+  steps:
+    - name: code checkout
+      uses: actions/checkout@v7
+
+    - name: SonarQube Scan
+      uses: SonarSource/sonarqube-scan-action@v8.2.0
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}

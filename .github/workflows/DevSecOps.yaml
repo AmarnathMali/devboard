@@ -22,7 +22,7 @@ jobs:
 
   sonarqube:
     uses: ./.github/workflows/sonarqube-scan.yaml
-  
+    secrets: inherit
   
 
 

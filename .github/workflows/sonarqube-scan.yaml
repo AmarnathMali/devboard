@@ -1,7 +1,7 @@
 #Goal - to check any security threats to checke hidden bugs, security gaps etc.
 name: sonarqube-scan
 on:
-  workflows_call:
+  workflow_call:
 
 jobs:
   sonarqube-scan:

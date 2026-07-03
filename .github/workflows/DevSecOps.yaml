@@ -32,3 +32,10 @@ jobs:
     needs: [code-quality, secret-scan, dependency-scan, docker-scan, sonarqube, code-test]
     secrets: inherit
 
+  #-----CD-----
+  deploy:
+    needs: [docker-push]
+    uses: ./.github/workflows/deploy.yaml
+    secrets: inherit
+
+

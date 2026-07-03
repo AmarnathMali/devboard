@@ -2,8 +2,9 @@
 name: Go Linting
 
 on:
-  schedule:
-    - cron: '35 14 * * *'
+  workflow_dispatch
+  # schedule:
+  #   - cron: '35 14 * * *'
 
 jobs:
   go-lint:

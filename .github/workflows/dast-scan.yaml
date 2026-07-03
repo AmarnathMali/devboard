@@ -10,24 +10,15 @@ jobs:
       - name: Code Checkout
         uses: actions/checkout@v7
 
-      - name: Diagnose reachability
-        run: |
-          echo "Target: http://${{ secrets.EC2_HOST }}:8080/"
-          echo "Running: curl -I --max-time 15 http://${{ secrets.EC2_HOST }}:8080/"
-          curl -v -I --connect-timeout 5 --max-time 15 "http://${{ secrets.EC2_HOST }}:8080/" > /tmp/devboard.headers 2> /tmp/devboard.curl || true
-          echo "---- curl stderr (last 50 lines) ----"
-          tail -n 50 /tmp/devboard.curl || true
-          echo "---- response headers ----"
-          cat /tmp.devboard.headers || true
 
       - name: Wait for services to be healthy
         run: |
-          timeout 160s sh -c 'until curl -s http://${{ secrets.EC2_HOST }}:8080 > /dev/null; do sleep 2; done'
+          timeout 60s sh -c 'until curl -s ${{ secrets.EC2_HOST }} > /dev/null; do sleep 2; done'
 
       - name: OWASP ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.14.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          target: 'http://${{ secrets.EC2_HOST }}:8080'
+          target: '${{ secrets.EC2_HOST }}'
           fail_action: false
           allow_issue_writing: false

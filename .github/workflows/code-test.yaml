@@ -15,9 +15,10 @@ jobs:
         uses: actions/setup-node@v6 
         with:
           node-version: '24.x'
-          
+
       - name: install dependencies
         run: npm install
+        working-directory: frontend
       
       - name: test code
         run: npm run test
